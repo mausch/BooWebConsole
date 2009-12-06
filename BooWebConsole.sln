@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooWebConsole", "BooWebConsole\BooWebConsole.csproj", "{3C980D6B-6FD6-4DC8-92AF-41EE1624679B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{97E7B369-6904-4D39-9085-857A1F62FA0F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3C980D6B-6FD6-4DC8-92AF-41EE1624679B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3C980D6B-6FD6-4DC8-92AF-41EE1624679B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3C980D6B-6FD6-4DC8-92AF-41EE1624679B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3C980D6B-6FD6-4DC8-92AF-41EE1624679B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

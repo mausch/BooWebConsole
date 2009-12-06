@@ -1,0 +1,1 @@
+msbuild BooWebConsole.proj
