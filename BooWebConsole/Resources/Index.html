@@ -1,13 +1,23 @@
 ﻿<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <html>
 	<head>
-		<title></title>
+		<title>Boo console</title>
+		<style type="text/css">
+		.error {
+		    color: red;
+		}
+		</style>
 	</head>
 	<body>
 	    <form method="post" action="">
-	        <textarea name="prg" cols="80" rows="40"></textarea><br />
-	        <input type="submit" value="Eval" />
+	        <textarea name="prg" cols="80" rows="10" accesskey="e">#if ($model.Prg)$model.Prg#end</textarea><br />
+	        <input type="submit" value="Execute" accesskey="x" />
 	    </form>
-	    $model.Output
+	    #if ($model.Errors)
+	    <pre class="error">$model.Errors</pre>
+	    #end
+	    #if ($model.Output)
+	    <pre>$model.Output</pre>
+	    #end
 	</body>
 </html>

@@ -7,18 +7,20 @@ using MiniMVC;
 namespace BooWebConsole {
     public class IndexController : Controller {
         public override IResult Execute(HttpContext context) {
-            var prg = context.Request["prg"];
-            var viewModel = new ViewModel();
-            if (string.IsNullOrEmpty(prg))
-                return new ViewResult(viewModel, ViewName);
+            var ctx = new Context {
+                Prg = context.Request["prg"]
+            };
+            if (string.IsNullOrEmpty(ctx.Prg))
+                return new ViewResult(ctx, ViewName);
             var interpreter = new InteractiveInterpreter();
             foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
                 interpreter.References.Add(a);
             var output = new StringBuilder();
             interpreter.Print = o => output.Append(o);
-            var ctx = interpreter.Eval(prg);
-            viewModel.Output = output.ToString();
-            return new ViewResult(viewModel, ViewName);
+            var compilerContext = interpreter.Eval(ctx.Prg);
+            ctx.Errors = compilerContext.Errors.ToString(true);
+            ctx.Output = output.ToString();
+            return new ViewResult(ctx, ViewName);
         }
     }
 }
