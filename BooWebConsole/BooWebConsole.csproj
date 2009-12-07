@@ -55,15 +55,24 @@
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Data" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ControllerFactory.cs" />
     <Compile Include="IndexController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Context.cs" />
+    <Compile Include="StaticController.cs" />
+    <Compile Include="SuggestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\Index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\jquery.autocomplete.css" />
+    <EmbeddedResource Include="Resources\jquery.autocomplete.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
