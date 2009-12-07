@@ -17,8 +17,12 @@ namespace BooWebConsole {
                 interpreter.References.Add(a);
             var output = new StringBuilder();
             interpreter.Print = o => output.Append(o);
-            var compilerContext = interpreter.Eval(ctx.Prg);
-            ctx.Errors = compilerContext.Errors.ToString(true);
+            try {
+                var compilerContext = interpreter.Eval(ctx.Prg);
+                ctx.Errors = compilerContext.Errors.ToString(true);
+            } catch (Exception e) {
+                ctx.Errors = e.ToString();
+            }
             ctx.Output = output.ToString();
             return new ViewResult(ctx, ViewName);
         }
