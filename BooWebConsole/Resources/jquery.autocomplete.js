@@ -272,7 +272,7 @@ $.Autocompleter = function(input, options) {
 	}
 	
 	function lastWord(value) {
-		if ( !options.multiple )
+		if ( !options.multiple || options.whole )
 			return value;
 		var words = trimWords(value);
 		if (words.length == 1) 
@@ -366,7 +366,7 @@ $.Autocompleter = function(input, options) {
 				dataType: options.dataType,
 				url: options.url,
 				data: $.extend({
-					q: lastWord(term),
+					q: options.beforeSend(lastWord(term)),
 					limit: options.max
 				}, extraParams),
 				success: function(data) {
@@ -429,7 +429,9 @@ $.Autocompleter.defaults = {
 		return value.replace(new RegExp("(?![^&;]+;)(?!<[^<>]*)(" + term.replace(/([\^\$\(\)\[\]\{\}\*\.\+\?\|\\])/gi, "\\$1") + ")(?![^<>]*>)(?![^&;]+;)", "gi"), "<strong>$1</strong>");
 	},
     scroll: true,
-    scrollHeight: 180
+    scrollHeight: 180,
+    whole: true,
+    beforeSend: function(r) { return r; }
 };
 
 $.Autocompleter.Cache = function(options) {
