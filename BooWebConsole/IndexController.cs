@@ -12,7 +12,9 @@ namespace BooWebConsole {
             };
             if (string.IsNullOrEmpty(ctx.Prg))
                 return new ViewResult(ctx, ViewName);
-            var interpreter = new InteractiveInterpreter();
+            var interpreter = new InteractiveInterpreter {
+                Ducky = true,
+            };
             foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
                 interpreter.References.Add(a);
             var output = new StringBuilder();
