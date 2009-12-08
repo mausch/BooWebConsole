@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Text;
 using System.Web;
 using Boo.Lang.Interpreter;
@@ -18,17 +19,25 @@ namespace BooWebConsole {
             foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
                 interpreter.References.Add(a);
             var output = new StringBuilder();
-            interpreter.Print = o => output.Append(o);
-            interpreter.SetValue("context", context);
-            interpreter.Declare("context", typeof(object));
+            var defaultOut = Console.Out;
+            var newOut = new StringWriter(output);
             try {
-                var compilerContext = interpreter.Eval(ctx.Prg);
-                ctx.Errors = compilerContext.Errors.ToString(true);
-            } catch (Exception e) {
-                ctx.Errors = e.ToString();
+                Console.SetOut(newOut);
+                //interpreter.Print = o => output.Append(o); // doesn't work with the print macro
+                interpreter.SetValue("context", context);
+                interpreter.Declare("context", typeof(object));
+                try {
+                    var compilerContext = interpreter.Eval(ctx.Prg);
+                    ctx.Errors = compilerContext.Errors.ToString(true);
+                } catch (Exception e) {
+                    ctx.Errors = e.ToString();
+                }
+                ctx.Output = output.ToString();
+                return new ViewResult(ctx, ViewName);
+            } finally {
+                Console.SetOut(defaultOut);
+                newOut.Dispose();
             }
-            ctx.Output = output.ToString();
-            return new ViewResult(ctx, ViewName);
         }
     }
 }
