@@ -1,3 +1,2 @@
-Boo.Lang.Interpreter.AbstractInterpreter
-Boo.Lang.Runtime.RuntimeServices
+Boo.Lang.*
 CompilerGenerated.*

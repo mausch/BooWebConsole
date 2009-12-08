@@ -19,6 +19,8 @@ namespace BooWebConsole {
                 interpreter.References.Add(a);
             var output = new StringBuilder();
             interpreter.Print = o => output.Append(o);
+            interpreter.SetValue("context", context);
+            interpreter.Declare("context", typeof(object));
             try {
                 var compilerContext = interpreter.Eval(ctx.Prg);
                 ctx.Errors = compilerContext.Errors.ToString(true);

@@ -13,6 +13,7 @@
     	<MergeAsm Include="$(MSBuildProjectDirectory)\BooWebConsole\bin\$(BuildConfig)\Boo.Lang.Compiler.dll" />
     	<MergeAsm Include="$(MSBuildProjectDirectory)\BooWebConsole\bin\$(BuildConfig)\Boo.Lang.Interpreter.dll" />
     	<MergeAsm Include="$(MSBuildProjectDirectory)\BooWebConsole\bin\$(BuildConfig)\Boo.Lang.Parser.dll" />
+    	<MergeAsm Include="$(MSBuildProjectDirectory)\BooWebConsole\bin\$(BuildConfig)\Boo.Lang.Extensions.dll" />
 		</ItemGroup>
     <RemoveDir Directories="$(MergedOutputPath)"/>
     <MakeDir Directories="$(MergedOutputPath)" ContinueOnError="true"/>
