@@ -21,9 +21,10 @@
 	</Target>
   <Target Name="Build">
 		<MSBuild Projects="BooWebConsole.sln" StopOnFirstFailure="true" Properties="$(BuildConfigProp)" BuildInParallel="true" Targets="Rebuild"/>
+	</Target>
+	<Target Name="BuildAll" DependsOnTargets="Build;Merge">
 		<Copy SourceFiles="$(MergedOutputPath)\BooWebConsole.dll" DestinationFolder="$(MSBuildProjectDirectory)\Sample\bin"/>
 	</Target>
-	<Target Name="BuildAll" DependsOnTargets="Build;Merge"/>
 	<Target Name="SetRelease">
 		<PropertyGroup>
 			<BuildConfig>Release</BuildConfig>
