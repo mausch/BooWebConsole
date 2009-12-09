@@ -17,10 +17,10 @@
 	        <input type="submit" value="Execute" accesskey="x" />
 	    </form>
 	    #if ($model.Errors)
-	    <pre class="error">$model.Errors</pre>
+	    <pre class="error">$helper.HtmlEncode($model.Errors)</pre>
 	    #end
 	    #if ($model.Output)
-	    <pre>$model.Output</pre>
+	    <pre>$helper.HtmlEncode($model.Output)</pre>
 	    #end
 	    <script type="text/javascript">
 	    		function getPosition(textarea) {
