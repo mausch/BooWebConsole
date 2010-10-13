@@ -23,7 +23,7 @@ using MiniMVC;
 
 namespace BooWebConsole {
     public class IndexController : Controller {
-        public override IResult Execute(HttpContext context) {
+        public override IResult Execute(HttpContextBase context) {
             var ctx = new Context {
                 Prg = context.Request["prg"]
             };

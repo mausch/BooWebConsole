@@ -19,7 +19,7 @@ using MiniMVC;
 
 namespace BooWebConsole {
     public class StaticController : Controller {
-        public override IResult Execute(HttpContext context) {
+        public override IResult Execute(HttpContextBase context) {
             var resource = context.Request.QueryString["r"];
             var fullResourceName = string.Format("{0}.Resources.{1}", GetType().Assembly.FullName.Split(',')[0], resource);
             var resourceStream = GetType().Assembly.GetManifestResourceStream(fullResourceName);
@@ -32,7 +32,7 @@ namespace BooWebConsole {
         }
 
         public class EmptyResult : IResult {
-            public void Execute(HttpContext context) {}
+            public void Execute(HttpContextBase context) {}
         }
     }
 }
