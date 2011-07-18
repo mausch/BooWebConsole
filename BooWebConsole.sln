@@ -5,6 +5,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooWebConsole", "BooWebCons
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sample", "Sample\Sample.csproj", "{97E7B369-6904-4D39-9085-857A1F62FA0F}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "BooWebConsole.Views", "BooWebConsole.Views\BooWebConsole.Views.vbproj", "{A5D28AEA-E1E5-4FF1-A05A-F1308F9A35ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooWebConsole.Tests", "BooWebConsole.Tests\BooWebConsole.Tests.csproj", "{A1B5FCF4-7133-4F2E-BB1F-7EC6BE0617B6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,6 +23,14 @@ Global
 		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{97E7B369-6904-4D39-9085-857A1F62FA0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5D28AEA-E1E5-4FF1-A05A-F1308F9A35ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5D28AEA-E1E5-4FF1-A05A-F1308F9A35ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5D28AEA-E1E5-4FF1-A05A-F1308F9A35ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5D28AEA-E1E5-4FF1-A05A-F1308F9A35ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A1B5FCF4-7133-4F2E-BB1F-7EC6BE0617B6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1B5FCF4-7133-4F2E-BB1F-7EC6BE0617B6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1B5FCF4-7133-4F2E-BB1F-7EC6BE0617B6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1B5FCF4-7133-4F2E-BB1F-7EC6BE0617B6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

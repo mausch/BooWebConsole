@@ -19,6 +19,7 @@ using System.IO;
 using System.Text;
 using System.Web;
 using Boo.Lang.Interpreter;
+using BooWebConsole.Views;
 using MiniMVC;
 
 namespace BooWebConsole {
@@ -28,7 +29,7 @@ namespace BooWebConsole {
                 Prg = context.Request["prg"]
             };
             if (string.IsNullOrEmpty(ctx.Prg))
-                return new ViewResult(ctx, ViewName);
+                return new XDocResult(Views.Views.IndexDocument(ctx));
             var interpreter = new InteractiveInterpreter {
                 Ducky = true,
             };
@@ -49,7 +50,7 @@ namespace BooWebConsole {
                     ctx.Errors = e.ToString();
                 }
                 ctx.Output = output.ToString();
-                return new ViewResult(ctx, ViewName);
+                return new XDocResult(Views.Views.IndexDocument(ctx));
             } finally {
                 Console.SetOut(defaultOut);
                 newOut.Dispose();

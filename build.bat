@@ -1,1 +1,1 @@
-msbuild BooWebConsole.proj
+msbuild BooWebConsole.proj /p:Configuration=Release
