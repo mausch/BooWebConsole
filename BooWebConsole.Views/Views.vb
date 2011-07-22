@@ -1,6 +1,5 @@
 ﻿Imports System
 Imports System.Xml.Linq
-Imports System.Web
 Imports MiniMVC
 
 Public Module Views
@@ -40,10 +39,10 @@ Public Module Views
                     <input type="submit" value="Execute" accesskey="x"/>
                 </form>
                 <%= If(Not String.IsNullOrEmpty(model.Errors),
-                    <pre class="error"><%= HttpUtility.HtmlEncode(model.Errors) %></pre>,
+                    <pre class="error"><%= model.Errors %></pre>,
                     Nothing) %>
                 <%= If(Not String.IsNullOrEmpty(model.Output),
-                    <pre><%= HttpUtility.HtmlEncode(model.Output) %></pre>,
+                    <pre><%= model.Output %></pre>,
                     Nothing) %>
                 <script type="text/javascript">
                 //<![CDATA[
