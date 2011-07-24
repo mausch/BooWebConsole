@@ -1,6 +1,5 @@
 ﻿Imports System
 Imports System.Xml.Linq
-Imports MiniMVC
 
 Public Module Views
 
@@ -18,13 +17,9 @@ Public Module Views
         		}
         		</style>
                 <link rel="Stylesheet" href=<%= StaticUrl("jquery.autocomplete.css") %> type="text/css"/>
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"></script>
-                <script src=<%= StaticUrl("jquery.autocomplete.js") %> type="text/javascript"></script>
+                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js" type="text/javascript"/>
+                <script src=<%= StaticUrl("jquery.autocomplete.js") %> type="text/javascript"/>
             </x>
-    End Function
-
-    Public Function IndexDocument(ByVal model As Context) As XDocument
-        Return New XDocument(X.XHTML1_0_Transitional, Index(model))
     End Function
 
     Public Function Index(ByVal model As Context) As XElement
@@ -35,7 +30,7 @@ Public Module Views
             </head>
             <body>
                 <form method="post" action="">
-                    <textarea name="prg" cols="80" rows="10" accesskey="e" id="prg"><%= If(model.Prg, "") %></textarea><br/>
+                    <textarea name="prg" cols="80" rows="10" accesskey="e" id="prg"><%= model.Prg %></textarea><br/>
                     <input type="submit" value="Execute" accesskey="x"/>
                 </form>
                 <%= If(Not String.IsNullOrEmpty(model.Errors),

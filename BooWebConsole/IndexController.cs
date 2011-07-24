@@ -29,7 +29,7 @@ namespace BooWebConsole {
                 Prg = context.Request["prg"]
             };
             if (string.IsNullOrEmpty(ctx.Prg))
-                return new XDocResult(Views.Views.IndexDocument(ctx));
+                return new XDocResult(X.MakeHTML5Doc(Views.Views.Index(ctx)));
             var interpreter = new InteractiveInterpreter {
                 Ducky = true,
             };
@@ -50,7 +50,7 @@ namespace BooWebConsole {
                     ctx.Errors = e.ToString();
                 }
                 ctx.Output = output.ToString();
-                return new XDocResult(Views.Views.IndexDocument(ctx));
+                return new XDocResult(X.MakeHTML5Doc(Views.Views.Index(ctx)));
             } finally {
                 Console.SetOut(defaultOut);
                 newOut.Dispose();
