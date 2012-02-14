@@ -96,9 +96,6 @@
     <Compile Include="SuggestController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\Index.html" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Resources\jquery.autocomplete.css" />
     <EmbeddedResource Include="Resources\jquery.autocomplete.js" />
   </ItemGroup>
