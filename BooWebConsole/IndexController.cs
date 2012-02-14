@@ -24,25 +24,34 @@ using MiniMVC;
 
 namespace BooWebConsole {
     public class IndexController : Controller {
-        public override IResult Execute(HttpContextBase context) {
-            var ctx = new Context {
-                Prg = context.Request["prg"]
-            };
-            if (string.IsNullOrEmpty(ctx.Prg))
-                return new XDocResult(X.MakeHTML5Doc(Views.Views.Index(ctx)));
+        private static AbstractInterpreter BuildInterpreter(HttpContextBase context) {
             var interpreter = new InteractiveInterpreter {
                 Ducky = true,
             };
             foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
                 interpreter.References.Add(a);
+            //interpreter.Print = o => output.Append(o); // doesn't work with the print macro
+            interpreter.SetValue("context", context);
+            interpreter.Declare("context", typeof(object));
+            return interpreter;
+        }
+
+        private static IResult Result(Context ctx) {
+            return new XDocResult(Views.Views.Index(ctx).MakeHTML5Doc());
+        }
+
+        public override IResult Execute(HttpContextBase context) {
+            var ctx = new Context {
+                Prg = context.Request["prg"]
+            };
+            if (string.IsNullOrEmpty(ctx.Prg))
+                return Result(ctx);
             var output = new StringBuilder();
             var defaultOut = Console.Out;
             var newOut = new StringWriter(output);
             try {
                 Console.SetOut(newOut);
-                //interpreter.Print = o => output.Append(o); // doesn't work with the print macro
-                interpreter.SetValue("context", context);
-                interpreter.Declare("context", typeof(object));
+                var interpreter = BuildInterpreter(context);
                 try {
                     var compilerContext = interpreter.Eval(ctx.Prg);
                     ctx.Errors = compilerContext.Errors.ToString(true);
@@ -50,7 +59,7 @@ namespace BooWebConsole {
                     ctx.Errors = e.ToString();
                 }
                 ctx.Output = output.ToString();
-                return new XDocResult(X.MakeHTML5Doc(Views.Views.Index(ctx)));
+                return Result(ctx);
             } finally {
                 Console.SetOut(defaultOut);
                 newOut.Dispose();
