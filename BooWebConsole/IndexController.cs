@@ -36,16 +36,18 @@ namespace BooWebConsole {
             return interpreter;
         }
 
-        private static IResult Result(Context ctx) {
-            return new XDocResult(Views.Views.Index(ctx).MakeHTML5Doc());
+        private static void Result(HttpContextBase context, Context ctx) {
+            context.XDocument(Views.Views.Index(ctx).MakeHTML5Doc());
         }
 
-        public override IResult Execute(HttpContextBase context) {
+        public override void Execute(HttpContextBase context) {
             var ctx = new Context {
                 Prg = context.Request["prg"]
             };
-            if (string.IsNullOrEmpty(ctx.Prg))
-                return Result(ctx);
+            if (string.IsNullOrEmpty(ctx.Prg)) {
+                Result(context, ctx);
+                return;
+            }
             var output = new StringBuilder();
             var defaultOut = Console.Out;
             var newOut = new StringWriter(output);
@@ -59,7 +61,7 @@ namespace BooWebConsole {
                     ctx.Errors = e.ToString();
                 }
                 ctx.Output = output.ToString();
-                return Result(ctx);
+                Result(context, ctx);
             } finally {
                 Console.SetOut(defaultOut);
                 newOut.Dispose();

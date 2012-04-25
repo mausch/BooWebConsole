@@ -22,12 +22,10 @@ using MiniMVC;
 
 namespace BooWebConsole {
     public class SuggestController: Controller {
-        public override IResult Execute(HttpContextBase context) {
+        public override void Execute(HttpContextBase context) {
             var q = context.Request["q"];
             string response = GetSuggestions(q);
-            return new RawResult(response) {
-                ContentType = "application/json"
-            };
+            context.Raw(response, contentType: "application/json");
         }
 
         public string GetSuggestions(string q) {
