@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("BooWebConsole.Tests")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("BooWebConsole.Tests")]
-[assembly: AssemblyCopyright("Copyright © Mauricio Scheffer 2011")]
+[assembly: AssemblyCopyright("Copyright © Mauricio Scheffer 2011-2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
