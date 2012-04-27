@@ -90,10 +90,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ControllerFactory.cs" />
-    <Compile Include="IndexController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticController.cs" />
-    <Compile Include="SuggestController.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Resources\jquery.autocomplete.css" />

@@ -14,7 +14,7 @@ namespace BooWebConsole.Tests {
 
         [Test]
         public void HTMLCompatible() {
-            var xml = X.MakeHTML5Doc(Views.Views.Index(new Context()));
+            var xml = Views.Views.Index(new Context()).MakeHTML5Doc();
             Console.WriteLine(xml.ToString());
         }
     }
