@@ -51,9 +51,7 @@ namespace BooWebConsole {
         }
 
         public static string GetSuggestions(string q) {
-            var interpreter = new InteractiveInterpreter();
-            foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
-                interpreter.References.Add(a);
+            var interpreter = NewInterpreter();
             var suggestions = new string[0];
             if (!string.IsNullOrEmpty(q)) {
                 suggestions = interpreter.SuggestCodeCompletion(q)
@@ -66,12 +64,17 @@ namespace BooWebConsole {
             return string.Format("[{0}]", string.Join(",", suggestions));
         }
 
-        public static AbstractInterpreter BuildInterpreter(HttpContextBase context) {
+        public static AbstractInterpreter NewInterpreter() {
             var interpreter = new InteractiveInterpreter {
                 Ducky = true,
             };
             foreach (var a in AppDomain.CurrentDomain.GetAssemblies())
                 interpreter.References.Add(a);
+            return interpreter;
+        }
+
+        public static AbstractInterpreter BuildInterpreter(HttpContextBase context) {
+            var interpreter = NewInterpreter();
             //interpreter.Print = o => output.Append(o); // doesn't work with the print macro
             interpreter.SetValue("context", context);
             interpreter.Declare("context", typeof(object));
